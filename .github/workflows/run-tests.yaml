@@ -1,0 +1,17 @@
+name: run-tests
+
+on:
+  push:
+    branches: master
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Setup .NET Core 6.0
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '6.0.x'
+    - uses: actions/checkout@v1
+    - run: dotnet test -c "Debug"
